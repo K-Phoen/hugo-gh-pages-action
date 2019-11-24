@@ -33,7 +33,7 @@ None.
 # .github/workflows/deploy.yml
 name: Deploy
   push:
-    branches: ['master']
+    branches: [master]
 
 
 jobs:
@@ -51,7 +51,6 @@ jobs:
       - uses: K-Phoen/hugo-gh-pages-action@master
         with:
           github_token: ${{ secrets.GITHUB_PERSONAL_ACCESS_TOKEN }}
-
 ```
 
 ## License
