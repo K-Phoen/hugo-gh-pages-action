@@ -1,0 +1,28 @@
+name: 'Hugo for GitHub Pages'
+description: 'Builds and deploys Hugo-generated websites to GitHub Pages'
+
+branding:
+  icon: 'home'
+  color: 'green'
+
+inputs:
+  hugo_version:
+    # See https://github.com/gohugoio/hugo/releases
+    description: 'Version of Hugo to use'
+    required: true
+    default: '0.59.1'
+  build_folder:
+    description: 'Folder in which hugo generates the website'
+    required: true
+    default: 'public'
+  github_token:
+    description: 'Token to use to deploy the new version. Usually ${{ secrets.GITHUB_TOKEN }}'
+    required: true
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.hugo_version }}
+    - ${{ inputs.build_folder }}
+    - ${{ inputs.github_token }}
