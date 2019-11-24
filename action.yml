@@ -16,7 +16,7 @@ inputs:
     required: true
     default: 'public'
   github_token:
-    description: 'Token to use to deploy the new version. Usually ${{ secrets.GITHUB_TOKEN }}'
+    description: 'Token to use to deploy the new version'
     required: true
 
 runs:
