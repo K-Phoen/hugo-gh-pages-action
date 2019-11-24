@@ -1,4 +1,4 @@
-# Hugo for GitHub Pages
+# Hugo Deploys for GitHub Pages
 
 Builds and deploys Hugo-generated websites to GitHub Pages
 

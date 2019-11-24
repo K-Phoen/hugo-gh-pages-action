@@ -1,6 +1,6 @@
 FROM alpine:3.10
 
-LABEL "com.github.actions.name"="Hugo for GitHub Pages"
+LABEL "com.github.actions.name"="Hugo Deploys for GitHub Pages"
 LABEL "com.github.actions.description"="Builds and deploys Hugo-generated websites to GitHub Pages"
 LABEL "com.github.actions.icon"="home"
 LABEL "com.github.actions.color"="green"
