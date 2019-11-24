@@ -19,9 +19,12 @@ echo ::Building website
 
 /tmp/hugo
 
-echo ::Publishing website ::debug build_folder=${BUILD_FOLDER}
-
 cd $BUILD_FOLDER
+
+REMOTE_REPO_URL=`git config --get remote.origin.url`
+REMOTE_REPO_NAME=`echo ${REMOTE_REPO_URL} | cut -d '/' -f 4-`
+
+echo ::Publishing website ::debug build_folder=${BUILD_FOLDER} remote_name=${REMOTE_REPO_NAME}
 
 git config user.name "${GITHUB_ACTOR}"
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
@@ -31,4 +34,4 @@ git checkout $BUILD_BRANCH
 git add .
 
 git commit -am "Automatic deployment" || true
-git push --force "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+git push "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${REMOTE_REPO_NAME}"
