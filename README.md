@@ -12,12 +12,16 @@ Builds and deploys Hugo-generated websites to GitHub Pages
 
 **Required** Folder in which hugo generates the website. Default `"public".
 
+### `build_branch`
+
+**Required** Branch in which the website is published. Default `"master".
 
 ### `github_token`
 
 **Required** Token to use to deploy the new version. `${{ github.token }}` or a
 [personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)
-if you need to clone submodules.
+if you need to [clone submodules](https://github.com/actions/checkout#checkout-private-submodules)
+(and be sure that the submodule is configured via `https` and not `ssh`).
 
 ## Outputs
 

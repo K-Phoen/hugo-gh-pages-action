@@ -15,6 +15,10 @@ inputs:
     description: 'Folder in which hugo generates the website'
     required: true
     default: 'public'
+  build_branch:
+    description: 'Branch in which the website is published'
+    required: true
+    default: 'master'
   github_token:
     description: 'Token to use to deploy the new version'
     required: true
@@ -26,3 +30,4 @@ runs:
     - ${{ inputs.hugo_version }}
     - ${{ inputs.build_folder }}
     - ${{ inputs.github_token }}
+    - ${{ inputs.build_branch }}

@@ -8,6 +8,7 @@ version=$1
 HUGO_VERSION=${version#prefix}
 BUILD_FOLDER=$2
 GITHUB_TOKEN=$3
+BUILD_BRANCH=$4
 
 echo ::Installing Hugo ::debug version=${HUGO_VERSION}
 
@@ -24,6 +25,8 @@ cd $BUILD_FOLDER
 
 git config user.name "${GITHUB_ACTOR}"
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+git checkout $BUILD_BRANCH
 
 git add .
 
