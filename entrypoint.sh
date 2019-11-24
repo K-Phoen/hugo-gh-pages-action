@@ -31,4 +31,4 @@ git checkout $BUILD_BRANCH
 git add .
 
 git commit -am "Automatic deployment" || true
-git push "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+git push --force "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
