@@ -1,4 +1,4 @@
-name: 'Hugo for GitHub Pages'
+name: 'Hugo Deploys for GitHub Pages'
 description: 'Builds and deploys Hugo-generated websites to GitHub Pages'
 
 branding:
