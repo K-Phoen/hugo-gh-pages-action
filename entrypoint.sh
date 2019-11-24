@@ -10,6 +10,11 @@ BUILD_FOLDER=$2
 GITHUB_TOKEN=$3
 BUILD_BRANCH=$4
 
+git config --global user.name "${GITHUB_ACTOR}"
+git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+git checkout "${GITHUB_REF:11}"
+
 echo ::Installing Hugo ::debug version=${HUGO_VERSION}
 
 wget -O /tmp/hugo.tar.gz https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
@@ -26,12 +31,17 @@ REMOTE_REPO_NAME=`echo ${REMOTE_REPO_URL} | cut -d '/' -f 4-`
 
 echo ::Publishing website ::debug build_folder=${BUILD_FOLDER} remote_name=${REMOTE_REPO_NAME}
 
-git config user.name "${GITHUB_ACTOR}"
-git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-
 git checkout $BUILD_BRANCH
 
 git add .
 
 git commit -am "Automatic deployment" || true
 git push "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${REMOTE_REPO_NAME}"
+
+echo ::Commit release on main repository
+
+cd ..
+
+git add $BUILD_FOLDER
+git commit -am "Automatic deployment" || true
+git push "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
