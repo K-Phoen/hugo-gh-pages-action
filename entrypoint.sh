@@ -22,7 +22,7 @@ tar -zxf /tmp/hugo.tar.gz -C /tmp
 
 echo ::Building website
 
-/tmp/hugo
+/tmp/hugo -d $BUILD_FOLDER
 
 cd $BUILD_FOLDER
 
